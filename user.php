@@ -58,14 +58,25 @@ class User {
 
   }
 
-  //create table
-  public function create_table(){
 
+  //check user table exist
+  public function is_users_table_exist(){
     //check table exist
     $query_chk = "SELECT id FROM users";
     $result_chk = mysqli_query($this->db_connection,$query_chk);
 
     if(empty($result_chk)){
+      return false;
+    }else{
+      return true;
+    }
+
+  }
+
+  //create table
+  public function create_table(){
+
+    if(!$this->is_users_table_exist()){
       //create new table
       $query_create = "CREATE TABLE IF NOT EXISTS users (
                 id INT(11) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
@@ -73,7 +84,7 @@ class User {
                 surname VARCHAR(35) DEFAULT NULL,
                 email VARCHAR(255) NOT NULL UNIQUE KEY,
                 created_at DATETIME NOT NULL,
-                updated_at DATETIME NOT NULL,
+                updated_at DATETIME DEFAULT NULL,
                 status INT(1) NOT NULL
                 )";
       $result = mysqli_query($this->db_connection,$query_create);
@@ -84,6 +95,32 @@ class User {
 
     }
 
+  }
+
+  //check email exist
+  public function is_email_exist(){
+    $query_chk = "SELECT id FROM users WHERE email = '".$this->email."'";
+    $result_chk = mysqli_query($this->db_connection,$query_chk);
+
+    if(@mysqli_num_rows($result_chk) == 0){
+      return false;
+    }else{
+      return true;
+    }
+  }
+
+  //insert Record
+  public function save(){
+    //$query = "INSERT INTO users ('name','surname','email','created_at','status') VALUES ('".$this->name."','".$this->surname."','".$this->email."','".$this->created_at."',".$this->status.")";
+    $query = "INSERT INTO users (name, surname, email, created_at, status) VALUES (
+              '".mysqli_real_escape_string($this->db_connection,$this->name)."',
+              '".mysqli_real_escape_string($this->db_connection,$this->surname)."',
+              '".mysqli_real_escape_string($this->db_connection,$this->email)."',
+              '".$this->created_at."',
+              ".$this->status.")";
+    $result = mysqli_query($this->db_connection,$query);
+    echo $query."\n";
+    return $result;
   }
 
 
