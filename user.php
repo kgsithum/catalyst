@@ -58,6 +58,34 @@ class User {
 
   }
 
+  //create table
+  public function create_table(){
+
+    //check table exist
+    $query_chk = "SELECT id FROM users";
+    $result_chk = mysqli_query($this->db_connection,$query_chk);
+
+    if(empty($result_chk)){
+      //create new table
+      $query_create = "CREATE TABLE IF NOT EXISTS users (
+                id INT(11) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+                name VARCHAR(35) NOT NULL,
+                surname VARCHAR(35) DEFAULT NULL,
+                email VARCHAR(255) NOT NULL UNIQUE KEY,
+                created_at DATETIME NOT NULL,
+                updated_at DATETIME NOT NULL,
+                status INT(1) NOT NULL
+                )";
+      $result = mysqli_query($this->db_connection,$query_create);
+
+      if($result){
+        echo "users table created.\n";
+      }
+
+    }
+
+  }
+
 
 
 }

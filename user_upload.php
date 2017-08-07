@@ -13,24 +13,60 @@ if($argc > 1){
   $params = array();
   //get -u if exist
   if($user_index = array_search("-u",$argv)){
-    $db_user = $argv[$user_index + 1];
-    $params['DB_USERNAME'] = $db_user;
+    if(isset($argv[$user_index + 1])){
+      $db_user = $argv[$user_index + 1];
+      $params['DB_USERNAME'] = $db_user;
+    }
+
   }
   //get -p if exist
   if($pass_index = array_search("-p",$argv)){
-    $db_pass = $argv[$pass_index + 1];
-    $params['DB_PASSWORD'] = $db_pass;
+    if(isset($argv[$pass_index + 1])){
+      $db_pass = $argv[$pass_index + 1];
+      $params['DB_PASSWORD'] = $db_pass;
+    }
+
   }
   //get -h if exist
   if($host_index = array_search("-h",$argv)){
-    $db_host = $argv[$host_index + 1];
-    $params['DB_HOST'] = $db_host;
+    if(isset($argv[$host_index + 1])){
+      $db_host = $argv[$host_index + 1];
+      $params['DB_HOST'] = $db_host;
+    }
+
   }
 
   //create user object
   $user_obj = new User($params);
-  //$str = $user_obj->test();
-  //print_r($str);
+
+
+  //handle all the derectives
+  foreach($argv as $arg){
+
+    switch($arg){
+
+      case '--create_table':
+        //create user table 
+        echo "create_table called.\n";
+        $user_obj->create_table();
+
+      break;
+
+      case '--file':
+        echo "file called.\n";
+      break;
+
+      case '--help':
+        echo "help called.\n";
+      break;
+
+      default:
+        echo "default called.\n";
+      break;
+
+
+    }
+  }
 
 }else{
   echo "no args\n";
