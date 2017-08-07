@@ -28,15 +28,23 @@ class User {
       //set default host
       $array_params['DB_PASSWORD'] = DB_PASSWORD;
     }
-    // establish connection
-    if(!$this->db_connection = mysqli_connect($array_params['DB_HOST'], $array_params['DB_USERNAME'], $array_params['DB_PASSWORD'])) {
-      throw new Exception('Error connecting to MySQL: '.mysqli_error());
+
+    try{
+      // establish connection
+      if($this->db_connection = @mysqli_connect($array_params['DB_HOST'], $array_params['DB_USERNAME'], $array_params['DB_PASSWORD'])) {
+        // select database
+        if(!@mysqli_select_db($this->db_connection,DB_NAME)) {
+          throw new Exception('Error selecting database.\n');
+        }
+      }else{
+        throw new Exception('Error connecting to MySQL\n');
+      }
+
+    }catch(Exception $e){
+      echo $e->getMessage();
     }
 
-    // select database
-    if(!mysqli_select_db($this->db_connection,DB_NAME)) {
-      throw new Exception('Error selecting database: '.mysqli_error());
-    }
+
   }
 
 

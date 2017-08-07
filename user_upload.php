@@ -8,7 +8,6 @@ include("user.php");
 
 //check arguments
 if($argc > 1){
-  echo "args\n";
 
   //create user object. create mysql connection with params
   $params = array();
@@ -30,9 +29,9 @@ if($argc > 1){
 
   //create user object
   $user_obj = new User($params);
-  $str = $user_obj->test();
-  print_r($str);
-  
+  //$str = $user_obj->test();
+  //print_r($str);
+
 }else{
   echo "no args\n";
 }
