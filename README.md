@@ -1,6 +1,6 @@
 # Catalyst Assignment
 
-This is the assignment which is done to provide test for script task and logic task 
+This is the assignment which is done to provide test for script task and logic task
 
 ## Getting Started
 
@@ -28,9 +28,10 @@ Download all the files into a folder in your environment. All the iles should be
 Customize Mysql credentials in config.php file
 
 ```
-HOST
-USER
-DB
+DB_USERNAME
+DB_PASSWORD
+DB_HOST
+DB_NAME
 ```
 
 ## Running the tests
@@ -123,7 +124,7 @@ Run foobar.php script with following command
 
 ## Authors
 
-* **Sithum Amarasinghe** - *Initial work* - [CatalystTest](https://github.com/kgsithum)
+* **Sithum Amarasinghe** - *Initial work* - [CatalystTest](https://github.com/kgsithum/catalyst)
 
 
 ## References
