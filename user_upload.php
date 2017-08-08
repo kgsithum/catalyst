@@ -4,7 +4,6 @@ ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
 include("user.php");
 
-//print_r($argc);
 
 //check arguments
 if($argc > 1){
@@ -152,12 +151,13 @@ if($argc > 1){
 
       break;
 
+      //process --help derective
       case '--help':
         echo "help called.\n";
       break;
 
       default:
-        
+
       break;
 
 

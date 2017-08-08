@@ -119,7 +119,7 @@ class User {
               '".$this->created_at."',
               ".$this->status.")";
     $result = mysqli_query($this->db_connection,$query);
-    echo $query."\n";
+    
     return $result;
   }
 
