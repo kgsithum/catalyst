@@ -1,10 +1,10 @@
 # Catalyst Assignment
 
-This is the assignment done to provide test for script task and logic task 
+This is the assignment which is done to provide test for script task and logic task 
 
 ## Getting Started
 
-These instructions will get you a copy of the scripts up and running on your local machine for testing purposes. 
+These instructions will get you a copy of the scripts up and running on your local machine for testing purposes.
 
 ### Prerequisites
 
@@ -29,13 +29,13 @@ Customize Mysql credentials in config.php file
 
 ```
 HOST
-USER 
+USER
 DB
 ```
 
-## Running the tests 
+## Running the tests
 
-These tests can be run in a console or command prompt. These tests included both Script Task tests and Logic Task tests. 
+These tests can be run in a console or command prompt. These tests included both Script Task tests and Logic Task tests.
 
 ### Script Task Tests
 
@@ -90,7 +90,7 @@ Following test examples provide facility to test derectives
 Following test examples provide facility to test main features
 
 
-Process CSV file and insert users 
+Process CSV file and insert users
 
 ```
 #php -f user_upload.php -- --create_table --file users.csv
@@ -113,7 +113,7 @@ Process CSV file with dry_run
 Run foobar.php script with following command
 
 ```
-#php -f foobar.php 
+#php -f foobar.php
 ```
 
 ## Built With
@@ -126,9 +126,8 @@ Run foobar.php script with following command
 * **Sithum Amarasinghe** - *Initial work* - [CatalystTest](https://github.com/kgsithum)
 
 
-## References 
+## References
 
 * [PHP command line](http://php.net/manual/en/features.commandline.php)
 * [PHP validation](http://php.net/manual/en/filter.examples.validation.php)
 * [fgetcsv](http://php.net/manual/en/function.fgetcsv.php)
-
